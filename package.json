@@ -1,0 +1,13 @@
+{
+    "name": "Multi process Socket.IO"
+  , "version": "0.1.0"
+  , "description": "Socket.IO with multiple processes"
+  , "keywords": ["socket.io", "redisstore", "multiprocess"]
+  , "author": "Michel Hiemstra <mhiemstra@php.net>"
+  , "dependencies": {
+        "socket.io": "0.9.11"
+      , "cluster": "0.7.7"
+    }
+  , "main": "app"
+  , "engines": { "node": ">= 0.8.12" }
+}

@@ -1,0 +1,16 @@
+{
+    "rampup_users":"25000", 
+	"rampup_rate":"500",  
+	"connection_rate":"60",
+	"max_users":"100000",
+	"user_ttl":{
+		"min":"300",
+		"max":"3600"
+	},
+	"user_id":{
+		"from":"1",
+		"to":"10000"
+	},
+	"host":"localhost",
+	"port":"5000"
+}
