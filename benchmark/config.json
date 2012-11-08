@@ -1,10 +1,10 @@
 {
-    "rampup_users":"25000", 
-	"rampup_rate":"500",  
+    "rampup_users":"10000", 
+	"rampup_rate":"10",  
 	"connection_rate":"60",
-	"max_users":"100000",
+	"max_users":"10000",
 	"user_ttl":{
-		"min":"300",
+		"min":"900",
 		"max":"3600"
 	},
 	"user_id":{
