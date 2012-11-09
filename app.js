@@ -27,27 +27,25 @@ io.configure(function() {
 	io.set('transports', ['websocket']);
 });
 
-process.send({cmd: 'benchAddUser', pid: process.pid});
-
 /* Listen to incoming connections */
 io.sockets.on('connection', function (socket) {
 	
 	var data = {user_id : 0};
 	
+	process.send({cmd: 'benchAddUser', pid: process.pid});
+	
 	/* Store user data, we need it before user gets disconnected */
 	socket.on('data', function(transportData) {
 	
 		data = transportData;
-		
-		//logger.info('Connection from user_id: '+ data.user_id);
-				
+						
 		data.session_start = Math.round(new Date().getTime() / 1000);
 	});
-
+	
 	/* Listen to disconnect */
 	socket.on('disconnect', function () {
-
-		//logger.info('Disconnected user_id: '+ data.user_id);
+		
+		process.send({cmd: 'benchRemoveUser', pid: process.pid});
 		
 		/* User session (connection) duration */
 		var duration = Math.round(new Date().getTime() / 1000) - data.session_start;

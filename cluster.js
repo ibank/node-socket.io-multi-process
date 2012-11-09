@@ -1,5 +1,5 @@
 var cluster = require("cluster"),
-	numCPUs = require('os').cpus().length || 4;
+	processes = require('os').cpus().length || 4;
 
 cluster.setupMaster({
   exec : "app.js",
@@ -8,7 +8,7 @@ cluster.setupMaster({
 
 if (cluster.isMaster) {
 
-	var bench = require('./benchmark/server');
+	var bench = require('./benchmark/track');
 	
 	function messageHandler(msg) {
 	
@@ -21,15 +21,20 @@ if (cluster.isMaster) {
 			
 			bench.addUser(msg.pid);
 		}
+		
+		if (msg.cmd == 'benchRemoveUser') {
+			
+			bench.removeUser(msg.pid);
+		}
 	}
 	
 	setInterval(function() {
 		
-		bench.log();
-	}, 1500);
+		console.log(bench.log());
+	}, 3000);
 
 	// Fork workers.
-	for (var i = 0; i < numCPUs; i++) {
+	for (var i = 0; i < processes; i++) {
 		
 		cluster.fork();
 	}
