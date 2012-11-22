@@ -1,3 +1,7 @@
+Development on this project has stopped due to an [unresolved issue in Socket.IO](https://github.com/LearnBoost/socket.io/issues/438) which occurres when using multi-instance / multi-process nodes. A good alternative for Socket.IO would be [SockJS](https://github.com/sockjs/sockjs-node) if multi-process and multi-server are required for your project. 
+
+
+
 Run your socket.io application in multiple processes
 ====================================================
 
@@ -28,7 +32,3 @@ Your application should be up and running.
 
 Spawn clients to your application
 `$ node spawn_clients`
-
----
-
-*Work in progress*
